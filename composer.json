@@ -1,0 +1,20 @@
+{
+        "name":"phungquangson/shop-thoi-trang",
+        "description": "Xay dung website bán hàng - Năm học 2023-2034",
+        "authors": [
+            {
+                "name": "Phùng Quang Sơn",
+                "email": "quangsonphung86@gmai.com"
+            }
+        ],
+        "autoload": {
+            "psr-4": {
+                "App\\":"app/"
+            },
+            "files": [
+                "./app/Route.php",
+                "./config/database.php"
+            ]
+        },
+        "require": {}
+    }
