@@ -24,4 +24,4 @@
          </section>
       </div>
       <!-- END CONTENT-->
-      <?php require_once "../views/backend/header.php";?>
+      <?php require_once "../views/backend/footer.php";?>

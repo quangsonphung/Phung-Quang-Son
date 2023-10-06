@@ -63,12 +63,12 @@
             <span class="brand-text font-weight-light">QUẢN TRỊ</span>
          </a>
          <div class="sidebar">
-            <div class="user-panel mt-3 pb-3 mb-3 d-flex">
+<div class="user-panel mt-3 pb-3 mb-3 d-flex">
                <div class="image">
                   <img src="../public/dist/img/user2-160x160.jpg" class="img-circle elevation-2" alt="User Image">
                </div>
                <div class="info">
-                  <a href="#" class="d-block">Hồ Diên Lợi</a>
+                  <a href="#" class="d-block">Phùng Quang Sơn</a>
                </div>
             </div>
             <nav class="mt-2">
@@ -125,7 +125,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="page_index.html" class="nav-link">
+<a href="page_index.html" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Trang đơn</p>
                            </a>
@@ -189,7 +189,7 @@
                            </a>
                         </li>
                         <li class="nav-item">
-                           <a href="banner_index.html" class="nav-link">
+<a href="banner_index.html" class="nav-link">
                               <i class="far fa-circle nav-icon"></i>
                               <p>Banner</p>
                            </a>
@@ -200,6 +200,14 @@
                      <a href="#" class="nav-link">
                         <i class="nav-icon fas fa-tachometer-alt"></i>
                         <p>
+                           Hệ thống
+                           <i class="right fas fa-angle-left"></i>
+                        </p>
+                     </a>
+                     <ul class="nav nav-treeview">
+                        <li class="nav-item">
+                           <a href="user_index.html" class="nav-link">
+                              <i class="far fa-circle nav-icon"></i>
                               <p>Thành viên</p>
                            </a>
                         </li>
@@ -233,11 +241,4 @@
                </ul>
             </nav>
          </div>
-      </aside>                    Hệ thống
-                           <i class="right fas fa-angle-left"></i>
-                        </p>
-                     </a>
-                     <ul class="nav nav-treeview">
-                        <li class="nav-item">
-                           <a href="user_index.html" class="nav-link">
-                              <i class="far fa-circle nav-icon"></i>
+      </aside>
