@@ -27,7 +27,7 @@ class Route
             $pathView .= "dashboard/index.php";
         } else {
             $pathView .= $_REQUEST['option'] . "/";
-            if (!isset($_REQUEST['cat'])) {
+            if (isset($_REQUEST['cat'])) {
                 $pathView .= $_REQUEST['cat'] . ".php";
             } else {
                 $pathView .= "index.php";
