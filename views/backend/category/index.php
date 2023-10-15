@@ -1,4 +1,15 @@
+
+<?php
+use App\Models\Category;
+//status=0--> Rac
+//status=1--> Hiện thị lên trang người dùng
+//
+//SELECT * FROM brand wher status!=0 and id=1 order by created_at desc
+
+$list = category::where('status','!=',0)->orderBy('Created_at','DESC')->get();
+?>
 <?php require_once "../views/backend/header.php";?>
+<form action ="index.php?option=category&cat=process" method="post" enctype="multipart/form-data">
       <!-- CONTENT -->
       <div class="content-wrapper">
          <section class="content-header">
@@ -14,7 +25,7 @@
          <section class="content">
             <div class="card">
                <div class="card-header text-right">
-                  <button class="btn btn-sm btn-success">
+                  <button class="btn btn-sm btn-success" type ="submit" name = "THEM">
                      <i class="fa fa-save" aria-hidden="true"></i>
                      Lưu
                   </button>
@@ -30,6 +41,10 @@
                         <div class="mb-3">
                            <label>Slug</label>
                            <input type="text" name="slug" id="slug" placeholder="Nhập slug" class="form-control">
+                        </div>
+                        <div class="mb-3">
+                           <label>Mô tả</label>
+                          <textarea name="description" class="form-control"></textarea>
                         </div>
                         <div class="mb-3">
                            <label>Danh mục cha (*)</label>
@@ -63,16 +78,21 @@
                               </tr>
                            </thead>
                            <tbody>
+                           <?php if(count($list) > 0) : ?>
+                              <?php foreach($list as $item   ):?>
+                              <tr class="datarow">  
+                                 <td>
                               <tr class="datarow">
                                  <td>
                                     <input type="checkbox">
                                  </td>
                                  <td>
-                                    <img src="../public/images/category.jpg" alt="category.jpg">
+                                 <img src="../public/images/category/<?=$item->image;?>" alt="<?$item->image;?>">
                                  </td>
                                  <td>
                                     <div class="name">
-                                       Tên danh mục
+                                    <?= $item->name ; ?> 
+                                       
                                     </div>
                                     <div class="function_style">
                                        <a href="#">Hiện</a> |
@@ -81,8 +101,10 @@
                                        <a href="#">Xoá</a>
                                     </div>
                                  </td>
-                                 <td>Slug</td>
+                                 <td><?= $item->slug?></td>
                               </tr>
+                              <?php endforeach;?>
+                              <?php endif;?>
                            </tbody>
                         </table>
                      </div>
@@ -91,5 +113,6 @@
             </div>
          </section>
       </div>
+      </form> 
       <!-- END CONTENT-->
       <?php require_once "../views/backend/footer.php";?>

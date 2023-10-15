@@ -1,12 +1,18 @@
+<?php
+use App\Models\Page;
+
+//$list = Page::where('status','!=', 0)->orderBy('created_at','DESC')->get();
+?>
 <?php require_once "../views/backend/header.php";?>
-      <!-- CONTENT -->
+      <!-- CONTENT -->\
+      <form action ="index.php?option=page&cat=process" method="post" enctype="multipart/form-data">
       <div class="content-wrapper">
          <section class="content-header">
             <div class="container-fluid">
                <div class="row mb-2">
                   <div class="col-sm-12">
                      <h1 class="d-inline">Tất cả trang đơn</h1>
-                     <a href="page_create.html" class="btn btn-sm btn-primary">Thêm trang đơn</a>
+                     <a href="index.php?option=page&cat=create" class="btn btn-sm btn-primary">Thêm trang đơn</a>
                   </div>
                </div>
             </div>

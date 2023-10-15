@@ -1,5 +1,11 @@
+<?php
+use App\Models\Menu;
+
+$list = Menu::where('status','!=', 0)->orderBy('created_at','DESC')->get();
+?>
 <?php require_once "../views/backend/header.php";?>
       <!-- CONTENT -->
+      <form action="index.php?option=Menu&cat=process" method="post" enctype="multipart/form-data">
       <div class="content-wrapper">
          <section class="content-header">
             <div class="container-fluid">
@@ -157,24 +163,32 @@
                               </tr>
                            </thead>
                            <tbody>
+                           <?php if(count($list) > 0) : ?>
+                              <?php foreach($list as $item   ):?>
+                              <tr class="datarow">  
+                                 <td>
                               <tr class="datarow">
                                  <td>
                                     <input type="checkbox">
                                  </td>
                                  <td>
+                                 <img src="../public/images/brand/<?=$item->image;?>" alt="<?$item->image;?>">
+                                 </td>
+                                 <td>
                                     <div class="name">
-                                       Trang chủ
+                                    <?= $item->name ; ?>                                      
                                     </div>
                                     <div class="function_style">
-                                       <a href="#">Hiện</a> |
+                                       <a class="" href="#">Hiện</a> |
                                        <a href="#">Chỉnh sửa</a> |
-                                       <a href="../backend/brand_show.html">Chi tiết</a> |
+                                       <a href="../backend/category_show.html">Chi tiết</a> |
                                        <a href="#">Xoá</a>
                                     </div>
                                  </td>
-                                 <td>index.php</td>
-                                 <td>mainmenu</td>
+                                 <td><?= $item->slug?></td>
                               </tr>
+                              <?php endforeach;?>
+                              <?php endif;?>
                            </tbody>
                         </table>
                      </div>
@@ -183,6 +197,7 @@
             </div>
          </section>
       </div>
+     </form>
       <!-- END CONTENT-->
       <?php require_once "../views/backend/footer.php";?>
 

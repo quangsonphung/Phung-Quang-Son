@@ -1,5 +1,8 @@
+
+
 <?php require_once "../views/backend/header.php";?>
       <!-- CONTENT -->
+     <form action="index.php?option=config&cat=process" method="post" enctype="multipart/form-data">
       <div class="content-wrapper">
          <section class="content-header">
             <div class="container-fluid">

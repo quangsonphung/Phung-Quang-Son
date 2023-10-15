@@ -50,7 +50,7 @@
                </div>
             </li>
             <li class="nav-item">
-               <a class="nav-link" href="#" role="button">
+            <a class="nav-link" href="logout.php" role="button">
                   <i class="fas fa-power-off"></i> Đăng xuất
                </a>
             </li>
@@ -158,7 +158,7 @@
                               <i class="far fa-circle nav-icon"></i>
                               <p>Xuất hàng</p>
                            </a>
-                        </li>
+                        </li> 
                      </ul>
                   </li>
                   <li class="nav-item">

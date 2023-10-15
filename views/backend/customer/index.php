@@ -1,4 +1,4 @@
-<?php require_once "../views/backend/footer.php";?>
+<?php require_once "../views/backend/header.php";?>
       <!-- CONTENT -->
       <div class="content-wrapper">
          <section class="content-header">
@@ -6,7 +6,7 @@
                <div class="row mb-2">
                   <div class="col-sm-12">
                      <h1 class="d-inline">Tất cả khách hàng</h1>
-                     <a href="customer_create.html" class="btn btn-sm btn-primary">Thêm khách hàng</a>
+                     <a href="index.php?option=customer&cat=create" class="btn btn-sm btn-primary">Thêm khách hàng</a>
                   </div>
                </div>
             </div>

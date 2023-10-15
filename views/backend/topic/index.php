@@ -1,5 +1,11 @@
+<?php
+use App\Models\Topic;
+
+$list = Topic::where('status','!=', 0)->orderBy('created_at','DESC')->get();
+?>
 <?php require_once "../views/backend/header.php";?>
       <!-- CONTENT -->
+     <form action="index.php?option=topic&cat=process" method="post" enctype="multipart/form-data">
       <div class="content-wrapper">
          <section class="content-header">
             <div class="container-fluid">
@@ -14,7 +20,7 @@
          <section class="content">
             <div class="card">
                <div class="card-header text-right">
-                  <button class="btn btn-sm btn-success">
+               <button class="btn btn-sm btn-success" type ="submit" name = "THEM">
                      <i class="fa fa-save" aria-hidden="true"></i>
                      Lưu
                   </button>
@@ -50,23 +56,32 @@
                               </tr>
                            </thead>
                            <tbody>
+                           <?php if(count($list) > 0) : ?>
+                              <?php foreach($list as $item   ):?>
+                              <tr class="datarow">  
+                                 <td>
                               <tr class="datarow">
                                  <td>
                                     <input type="checkbox">
                                  </td>
                                  <td>
+                                 <img src="../public/images/topic/<?=$item->image;?>" alt="<?$item->image;?>">
+                                 </td>
+                                 <td>
                                     <div class="name">
-                                       Tên chủ đề
+                                    <?= $item->name ; ?>                                      
                                     </div>
                                     <div class="function_style">
-                                       <a href="#">Hiện</a> |
+                                       <a class="" href="#">Hiện</a> |
                                        <a href="#">Chỉnh sửa</a> |
-                                       <a href="../backend/topic_show.html">Chi tiết</a> |
+                                       <a href="../backend/category_show.html">Chi tiết</a> |
                                        <a href="#">Xoá</a>
                                     </div>
                                  </td>
-                                 <td>Slug</td>
+                                 <td><?= $item->slug?></td>
                               </tr>
+                              <?php endforeach;?>
+                              <?php endif;?>
                            </tbody>
                         </table>
                      </div>
@@ -75,5 +90,6 @@
             </div>
          </section>
       </div>
+      </form>
       <!-- END CONTENT-->
       <?php require_once "../views/backend/footer.php";?>
