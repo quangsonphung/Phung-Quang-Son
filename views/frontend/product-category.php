@@ -1,6 +1,12 @@
 <?php
+use App\Libraries\Pagination;
 use App\Models\Product;
 use App\Models\Category;
+
+$limit = 8;
+$current = Pagination::pageCurrent();
+$offset = Pagination::pageOffset($current, $limit);
+
 $slug=$_REQUEST['cat'];
 $cat=Category::where([['status','=',1],['slug','=',$slug]])->select('id','name')->first();
 $list_id=array();
@@ -30,7 +36,13 @@ if(count($list_category1)>0)
 $list_product=Product::where('status','=',1)
 ->whereIn('category_id',$list_id)
 ->orderBy('created_at','DESC')
+->skip($offset)
+->limit($limit)
 ->get();
+$total = Product::where('status','=',1)
+->whereIn('category_id',$list_id)
+->count();
+
 ;?>
 <?php require_once "views/frontend/header.php";?>
    <section class="bg-light">
@@ -41,7 +53,7 @@ $list_product=Product::where('status','=',1)
                   <a class="text-main" href="index.html">Trang chủ</a>
                </li>
                <li class="breadcrumb-item active" aria-current="page">
-                  Sản phẩm theo loại
+                 <?=$cat->name; ?>
                </li>
             </ol>
          </nav>
@@ -71,29 +83,7 @@ $list_product=Product::where('status','=',1)
                      
                   </div>
                </div>
-               <nav aria-label="Phân trang">
-                  <ul class="pagination justify-content-center">
-                     <li class="page-item">
-                        <a class="page-link text-main" href="product_category.html" aria-label="Previous">
-                           <span aria-hidden="true">&laquo;</span>
-                        </a>
-                     </li>
-                     <li class="page-item">
-                        <a class="page-link text-main" href="product_category.html">1</a>
-                     </li>
-                     <li class="page-item">
-                        <a class="page-link text-main" href="product_category.html">2</a>
-                     </li>
-                     <li class="page-item">
-                        <a class="page-link text-main" href="product_category.html">3</a>
-                     </li>
-                     <li class="page-item">
-                        <a class="page-link text-main" href="product_category.html" aria-label="Next">
-                           <span aria-hidden="true">&raquo;</span>
-                        </a>
-                     </li>
-                  </ul>
-               </nav>
+               <?=   Pagination::pageLink($total, $current, $limit, 'index.php?option=product&cat='.$slug); ?>
             </div>
          </div>
       </div>

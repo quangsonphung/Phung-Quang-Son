@@ -34,7 +34,7 @@ foreach ($list_brand as $brand)
                <div class="container-fluid">
                   <div class="row mb-2">
                      <div class="col-sm-12">
-                        <h1 class="d-inline">Thêm mới sản phẩm</h1>
+                     <strong class="text-dark text-lg">THÊM SẢN PHẨM</strong>
                      </div>
                   </div>
                </div>
@@ -46,12 +46,14 @@ foreach ($list_brand as $brand)
                         <i class="fa fa-arrow-left" aria-hidden="true"></i>
                         Về danh sách
                      </a>
-                     <button type="submit" class="btn btn-sm btn-success" type="submit" name="THEM">
+                     <button type="submit" class="btn btn-sm btn-primary" type="submit" name="THEM">
                         <i class="fa fa-save" aria-hidden="true"></i>
                         Thêm sản phẩm
                      </button>
                   </div>
                   <div class="card-body">
+                  <?php require_once "../views/backend/message.php";?>
+
                      <div class="row">
                         <div class="col-md-9">
                            <div class="mb-3">
@@ -84,11 +86,10 @@ foreach ($list_brand as $brand)
                            </div>
                            <div class="mb-3">
                               <label>Chi tiết (*)</label>
-                              <textarea name="detail" placeholder="Nhập chi tiết sản phẩm" rows="5"
-                                 class="form-control"></textarea>
+                              <textarea name="detail"   placeholder="Nhập chi tiết" class="form-control"></textarea>
                          <div class="mb-3">
                            <label>Mô tả</label>
-                          <textarea name="description" class="form-control"></textarea>
+                          <textarea name="description"   placeholder="Nhập mô tả" class="form-control"></textarea>
                          </div>
                        
                         </div>
@@ -99,10 +100,10 @@ foreach ($list_brand as $brand)
                            </div>
                            <div class="mb-3">
                               <label>Giá sale (*)</label>
-                              <input type="number" value="10000" min="10000" name="price_sale" class="form-control">
+                              <input type="number" value="10000" min="10000" name="pricesale" class="form-control">
                            </div>
                            <div class="mb-3">
-                              <label>SL (*)</label>
+                              <label>Số Lượng</label>
                               <input type="number" value="1" min="1" name="qty" class="form-control">
                            </div>
                            <div class="mb-3">

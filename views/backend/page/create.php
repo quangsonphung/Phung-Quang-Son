@@ -1,39 +1,32 @@
 <?php
-use App\Models\product;
-
-use App\Models\Category;
-use App\Models\Brand;
-use App\Models\Page;
+use App\Models\Topic;
 
 
 //status=0--> Rac
 //status=1--> Hiện thị lên trang người dùng
 //
 //SELECT * FROM brand wher status!=0 and id=1 order by created_at desc
-$list_category = Category::where('status','!=',0)->orderBy('Created_at','DESC')->get();
-$list_brand = Brand::where('status','!=',0)->orderBy('Created_at','DESC')->get();
 
-$category_id_html ="";
-$brand_id_html ="";
+$list_topic = Topic::where('status','!=',0)->orderBy('Created_at','DESC')->get();
 
-foreach ($list_category as $category)
+$topic_id_html ="";
+
+foreach ($list_topic as $topic)
 {
-   $category_id_html .="<option value ='$category->id'>$category->name</option>";
+   $topic_id_html .="<option value ='$topic->id'>$topic->name</option>";
 }
-foreach ($list_brand as $brand)
-{
-   $brand_id_html .="<option value ='$brand->id'>$brand->name</option>";
-}
-
 ?>
 <?php require_once "../views/backend/header.php";?>
+
       <!-- CONTENT -->
+      <form action ="index.php?option=page&cat=process" method="post" enctype="multipart/form-data">
+
       <div class="content-wrapper">
          <section class="content-header">
             <div class="container-fluid">
                <div class="row mb-2">
                   <div class="col-sm-12">
-                     <h1 class="d-inline">Thêm mới trang đơn</h1>
+                  <strong class="text-dark text-lg">THÊM BÀI VIẾT</strong>
                   </div>
                </div>
             </div>
@@ -41,32 +34,48 @@ foreach ($list_brand as $brand)
          <section class="content">
             <div class="card">
                <div class="card-header text-right">
-                  <a href="post_index.html" class="btn btn-sm btn-info">
+                  <a href="index.php?option=page" class="btn btn-sm btn-info">
                      <i class="fa fa-arrow-left" aria-hidden="true"></i>
                      Về danh sách
                   </a>
-                  <button type="submit" class="btn btn-sm btn-success" type="submit" name="THEM">
-                        <i class="fa fa-save" aria-hidden="true"></i>
-                        Thêm bài viết
-                     </button>
+                  <button class="btn btn-sm btn-primary" type ="submit"name="THEM">
+                     <i class="fa fa-save" aria-hidden="true"></i>
+                     Thêm bài viết
+                  </button>
                </div>
                <div class="card-body">
                   <div class="row">
                      <div class="col-md-9">
                         <div class="mb-3">
                            <label>Tiêu đề bài viết (*)</label>
-                           <input type="text" name="title" class="form-control">
+                           <input type="text" name="title" placeholder="Nhập name"  class="form-control">
                         </div>
                         <div class="mb-3">
                            <label>Slug</label>
-                           <input type="text" name="slug" class="form-control">
+                           <input type="text" name="slug" id="slug" placeholder="Nhập slug" class="form-control">
                         </div>
                         <div class="mb-3">
+                           <label>Kiểu bài viết</label>
+                          <textarea name="type" placeholder="Nhập Kiểu bài viết"  class="form-control"></textarea>
+                         </div>
+                        <div class="mb-3">
+                           <label>Mô tả</label>
+                          <textarea name="description"  placeholder="Nhập mô tả" class="form-control"></textarea>
+                         </div>
+                        <div class="mb-3">
                            <label>Chi tiết (*)</label>
-                           <textarea name="detail" rows="5" class="form-control"></textarea>
+                           <textarea name="detail" placeholder="Nhập chi tiết"  class="form-control"></textarea>
                         </div>
                      </div>
+                
                      <div class="col-md-3">
+                        <div class="mb-3">
+                           <label>Chủ đề (*)</label>
+                           <select name="topic_id" class="form-control">
+                              <option value="">None</option>
+                              <?= $topic_id_html;?>
+                           </select>
+                        </div>
                         <div class="mb-3">
                            <label>Hình đại diện</label>
                            <input type="file" name="image" class="form-control">
@@ -84,5 +93,5 @@ foreach ($list_brand as $brand)
             </div>
          </section>
       </div>
-      <!-- END CONTENT-->
+      </form>
       <?php require_once "../views/backend/footer.php";?>

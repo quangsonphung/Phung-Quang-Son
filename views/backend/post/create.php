@@ -26,7 +26,7 @@ foreach ($list_topic as $topic) {
          <div class="container-fluid">
             <div class="row mb-2">
                <div class="col-sm-12">
-                  <h1 class="d-inline">Thêm mới bài viết</h1>
+               <strong class="text-dark text-lg">THÊM BÀI VIẾT</strong>
                </div>
             </div>
          </div>
@@ -37,8 +37,8 @@ foreach ($list_topic as $topic) {
                <a href="index.php?option=post" class="btn btn-sm btn-info">
                   <i class="fa fa-arrow-left" aria-hidden="true"></i>
                   Về danh sách
-               </a>
-               <button class="btn btn-sm btn-success" type="submit" name="THEM">
+                              </a>
+               <button class="btn btn-sm btn-primary" type="submit" name="THEM">
                   <i class="fa fa-save" aria-hidden="true"></i>
                   Thêm bài viết
                </button>
@@ -48,23 +48,23 @@ foreach ($list_topic as $topic) {
                   <div class="col-md-9">
                      <div class="mb-3">
                         <label>Tiêu đề bài viết (*)</label>
-                        <input type="text" name="title" class="form-control">
+                        <input type="text" name="title" placeholder="Nhập name" class="form-control">
                      </div>
                      <div class="mb-3">
-                        <label>Slug</label>
-                        <input type="text" name="slug" class="form-control">
-                     </div>
+                              <label>Slug</label>
+                              <input type="text" placeholder="Nhập slug" name="slug" class="form-control">
+                           </div>
                      <div class="mb-3">
-                        <label>Kiểu</label>
-                        <textarea name="type" class="form-control"></textarea>
+                        <label>Kiểu bài viết</label>
+                        <textarea   name="type" placeholder="Nhập Kiểu bài viết" class="form-control"></textarea>
                      </div>
                      <div class="mb-3">
                         <label>Mô tả</label>
-                        <textarea name="description" class="form-control"></textarea>
+                        <textarea name="description" placeholder="Nhập mô tả" class="form-control"></textarea>
                      </div>
                      <div class="mb-3">
                         <label>Chi tiết (*)</label>
-                        <textarea name="detail" rows="5" class="form-control"></textarea>
+                          <textarea name="detail" placeholder="Nhập chi tiết" class="form-control"></textarea>
                      </div>
                   </div>
 
@@ -72,7 +72,7 @@ foreach ($list_topic as $topic) {
                      <div class="mb-3">
                         <label>Chủ đề (*)</label>
                         <select name="topic_id" class="form-control">
-                           <option value="">None</option>
+                           <option value="0">None</option>
                            <?= $topic_id_html; ?>
                         </select>
                      </div>

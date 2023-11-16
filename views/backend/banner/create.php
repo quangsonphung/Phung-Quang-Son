@@ -52,6 +52,18 @@
                            <option value="2">Chưa xuất bản</option>
                         </select>
                      </div>
+
+                     <div class="mb-3">
+                        <label>Hình đại diện</label>
+                        <input type="file" name="image" class="form-control">
+                     </div>
+
+                     <div class="mb-3">
+                        <label for="sort_order">Sắp Xếp</label>
+                        <select name="sort_order" id="sort_order" class="form-control">
+                           <option value="1">None</option>
+                        </select>
+                     </div>
                   </div>
                </div>
             </div>
